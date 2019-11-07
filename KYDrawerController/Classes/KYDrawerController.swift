@@ -65,8 +65,7 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
     private var _panDelta: CGFloat = 0
     
     lazy private var _containerView: UIView = {
-        let view = UIView(frame: self.view.frame)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = UIColor(white: 0.0, alpha: 0)
         view.addGestureRecognizer(self.containerViewTapGesture)
         return view
@@ -302,23 +301,8 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addGestureRecognizer(screenEdgePanGesture)
         view.addGestureRecognizer(panGesture)
-        view.addSubview(_containerView)
-        view.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "H:|-0-[_containerView]-0-|",
-                options: [],
-                metrics: nil,
-                views: viewDictionary
-            )
-        )
-        view.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "V:|-0-[_containerView]-0-|",
-                options: [],
-                metrics: nil,
-                views: viewDictionary
-            )
-        )
+        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(_containerView)
         _containerView.isHidden = true
         
         if let mainSegueID = mainSegueIdentifier {
