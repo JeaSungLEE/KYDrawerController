@@ -350,6 +350,7 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         _containerView.isHidden = false
         let duration: TimeInterval = animated ? drawerAnimationDuration : 0
 
+        navigationController?.view.bringSubviewToFront(_containerView)
         let isAppearing = state == .opened
         if _isAppearing != isAppearing {
             _isAppearing = isAppearing
