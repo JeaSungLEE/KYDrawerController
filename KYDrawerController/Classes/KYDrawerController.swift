@@ -301,8 +301,7 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
         
         view.addGestureRecognizer(screenEdgePanGesture)
         view.addGestureRecognizer(panGesture)
-        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
-        currentWindow?.addSubview(_containerView)
+        navigationController?.view.addSubview(_containerView)
         _containerView.isHidden = true
         
         if let mainSegueID = mainSegueIdentifier {
