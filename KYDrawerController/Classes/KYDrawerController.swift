@@ -263,6 +263,8 @@ open class KYDrawerController: UIViewController, UIGestureRecognizerDelegate {
                 )
             )
 
+            _containerView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
+            drawerViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleTopMargin, .flexibleRightMargin, .flexibleBottomMargin]
             _containerView.layoutIfNeeded()
             
             if isVisible {
